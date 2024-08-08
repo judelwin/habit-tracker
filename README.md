@@ -41,7 +41,7 @@ The Habit Tracker is a web application designed to help users track and manage t
     ```bash
     npm run dev
     ```
-    The application will be available at http://localhost:3000.
+    The application will be available at http://localhost:3000.\
     ***Configuration***
     **Firebase Configuration**
     Update src/configuration.ts with your Firebase project's configuration:
