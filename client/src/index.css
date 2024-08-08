@@ -1,5 +1,3 @@
-/* styles.css */
-
 body {
   font-family: Arial, sans-serif;
   background-color: #f5f5f5;
@@ -7,18 +5,30 @@ body {
   padding: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   height: 100vh;
 }
 
-.Home {
+.container {
+  width: 80%;
+  max-width: 600px;
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 80%;
-  max-width: 600px;
-  padding: 20px;
+  overflow: hidden;
   box-sizing: border-box;
+}
+
+.form-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #ddd;
+}
+
+.list-container {
+  padding: 20px;
+  overflow-y: auto;
+  max-height: calc(100vh - 100px); /* Adjust height as needed */
 }
 
 h1 {
@@ -40,10 +50,6 @@ button {
 
 button:hover {
   background-color: #0056b3;
-}
-
-form {
-  margin-bottom: 20px;
 }
 
 input[type="text"], textarea {
@@ -71,6 +77,7 @@ button[type="submit"]:hover {
 ul {
   list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
 li {
@@ -92,39 +99,19 @@ p {
   color: #666;
 }
 
-ul li ul {
-  margin: 10px 0 0 0;
-  padding: 0;
-}
-
-ul li ul li {
-  background-color: #fff;
-  border: none;
-  padding: 5px 0;
-}
-
-@media (max-width: 768px) {
-  .Home {
-    width: 90%;
-  }
-}
-
-/* Container for each habit item */
 .habit-item {
   display: flex;
-  flex-direction: column; /* Stack children vertically */
+  flex-direction: column;
   margin: 10px 0;
   padding: 10px;
   border-bottom: 1px solid #ddd;
   border-radius: 5px;
 }
 
-/* Habit details container */
 .habit-details {
-  margin-bottom: 10px; /* Space between details and buttons */
+  margin-bottom: 10px;
 }
 
-/* Habit name and description */
 .habit-details h2 {
   margin: 0;
   font-size: 18px;
@@ -133,17 +120,15 @@ ul li ul li {
 .habit-details p {
   margin: 5px 0;
   font-size: 14px;
-  line-height: 1.5; /* Improve readability */
-  word-wrap: break-word; /* Wrap long words */
+  line-height: 1.5;
+  word-wrap: break-word;
 }
 
-/* Container for action buttons */
 .habit-buttons {
   display: flex;
-  justify-content: space-between; /* Space between buttons */
+  justify-content: space-between;
 }
 
-/* Styling for buttons */
 .habit-button {
   background-color: #007bff;
   border: none;
@@ -154,11 +139,10 @@ ul li ul li {
   font-size: 14px;
   transition: background-color 0.3s ease;
   text-align: center;
-  flex: 1; /* Make buttons the same size */
-  margin: 0 5px; /* Space between buttons */
+  flex: 1;
+  margin: 0 5px;
 }
 
-/* Specific styling for "Check In" button */
 .checkin-button {
   background-color: #28a745;
 }
@@ -167,7 +151,6 @@ ul li ul li {
   background-color: #218838;
 }
 
-/* Specific styling for "Delete Habit" button */
 .delete-habit {
   background-color: #dc3545;
 }
@@ -176,7 +159,6 @@ ul li ul li {
   background-color: #c82333;
 }
 
-/* Flex container for progress items */
 .progress-item {
   display: flex;
   justify-content: space-between;
@@ -186,7 +168,6 @@ ul li ul li {
   border-bottom: 1px solid #ddd;
 }
 
-/* Styling for delete check-in button */
 .delete-checkin {
   background-color: #dc3545;
   border: none;
@@ -201,4 +182,3 @@ ul li ul li {
 .delete-checkin:hover {
   background-color: #c82333;
 }
-

@@ -3,7 +3,7 @@ import { auth, db } from '../configuration';
 import { signOut } from 'firebase/auth';
 import { collection, addDoc, query, where, getDocs, doc, updateDoc, deleteDoc, arrayUnion, arrayRemove } from 'firebase/firestore';
 import { format } from 'date-fns';
-
+import '../Home.css'
 interface Habit {
   id: string;
   name: string;
@@ -122,56 +122,61 @@ const Home: React.FC<HomeProps> = ({ user }) => {
   };
 
   return (
-    <div className="Home">
-      <h1>Habit Tracker</h1>
-      <button onClick={handleLogout} className="habit-button">Log Out</button>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          value={newHabit.name}
-          onChange={handleChange}
-          placeholder="Habit Name"
-          required
-        />
-        <textarea
-          name="description"
-          value={newHabit.description}
-          onChange={handleChange}
-          placeholder="Habit Description"
-          required
-        />
-        <button type="submit" className="habit-button">Add Habit</button>
-      </form>
-      <ul>
-        {habits.map(habit => (
-          <li key={habit.id} className="habit-item">
-            <div className="habit-details">
-              <h2>{habit.name}</h2>
-              <p>{habit.description}</p>
-            </div>
-            <div className="habit-buttons">
-              <button onClick={() => handleCheckIn(habit.id)} className="habit-button checkin-button">Check In</button>
-              <button onClick={() => handleDeleteHabit(habit.id)} className="habit-button delete-habit">Delete Habit</button>
-            </div>
-            <ul>
-              {habit.progress.map((date, index) => (
-                <li key={index} className="progress-item">
-                  {date}
-                  <button 
-                    className="delete-checkin" 
-                    onClick={() => handleDeleteCheckIn(habit.id, date)}
-                  >
-                    X
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </li>
-        ))}
-      </ul>
+    <div className="container">
+      <div className="form-container">
+        <h1>Habit Tracker</h1>
+        <button onClick={handleLogout} className="habit-button">Log Out</button>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="name"
+            value={newHabit.name}
+            onChange={handleChange}
+            placeholder="Habit Name"
+            required
+          />
+          <textarea
+            name="description"
+            value={newHabit.description}
+            onChange={handleChange}
+            placeholder="Habit Description"
+            required
+          />
+          <button type="submit" className="habit-button">Add Habit</button>
+        </form>
+      </div>
+      <div className="list-container">
+        <ul>
+          {habits.map(habit => (
+            <li key={habit.id} className="habit-item">
+              <div className="habit-details">
+                <h2>{habit.name}</h2>
+                <p>{habit.description}</p>
+              </div>
+              <div className="habit-buttons">
+                <button onClick={() => handleCheckIn(habit.id)} className="habit-button checkin-button">Check In</button>
+                <button onClick={() => handleDeleteHabit(habit.id)} className="habit-button delete-habit">Delete Habit</button>
+              </div>
+              <ul>
+                {habit.progress.map((date, index) => (
+                  <li key={index} className="progress-item">
+                    {date}
+                    <button 
+                      className="delete-checkin" 
+                      onClick={() => handleDeleteCheckIn(habit.id, date)}
+                    >
+                      X
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
+  
 };
 
 export default Home;
