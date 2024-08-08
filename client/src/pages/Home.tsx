@@ -147,35 +147,38 @@ const Home: React.FC<HomeProps> = ({ user }) => {
       </div>
       <div className="list-container">
         <ul>
-          {habits.map(habit => (
-            <li key={habit.id} className="habit-item">
-              <div className="habit-details">
-                <h2>{habit.name}</h2>
-                <p>{habit.description}</p>
-              </div>
-              <div className="habit-buttons">
-                <button onClick={() => handleCheckIn(habit.id)} className="habit-button checkin-button">Check In</button>
-                <button onClick={() => handleDeleteHabit(habit.id)} className="habit-button delete-habit">Delete Habit</button>
-              </div>
-              <ul>
-                {habit.progress.map((date, index) => (
-                  <li key={index} className="progress-item">
-                    {date}
-                    <button 
-                      className="delete-checkin" 
-                      onClick={() => handleDeleteCheckIn(habit.id, date)}
-                    >
-                      X
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))}
+          {habits
+            .sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded)) // Sort by dateAdded in descending order
+            .map(habit => (
+              <li key={habit.id} className="habit-item">
+                <div className="habit-details">
+                  <h2>{habit.name}</h2>
+                  <p>{habit.description}</p>
+                </div>
+                <div className="habit-buttons">
+                  <button onClick={() => handleCheckIn(habit.id)} className="habit-button checkin-button">Check In</button>
+                  <button onClick={() => handleDeleteHabit(habit.id)} className="habit-button delete-habit">Delete Habit</button>
+                </div>
+                <ul>
+                  {habit.progress.map((date, index) => (
+                    <li key={index} className="progress-item">
+                      {date}
+                      <button 
+                        className="delete-checkin" 
+                        onClick={() => handleDeleteCheckIn(habit.id, date)}
+                      >
+                        X
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
         </ul>
       </div>
     </div>
   );
+  
   
 };
 
