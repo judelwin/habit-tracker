@@ -1,0 +1,85 @@
+/* Signin.css */
+.signin-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  }
+  
+  .signin-container h1 {
+    margin-bottom: 20px;
+  }
+  
+  .signin-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .signin-buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+  }
+  
+  .signin-buttons .google-button {
+    background-color: #4285F4; /* Google Blue */
+  }
+  
+  .signin-buttons .anonymous-button {
+    background-color: #6c757d; /* Bootstrap Gray */
+  }
+  
+  .signin-buttons .email-button {
+    background-color: #007bff; /* Bootstrap Blue */
+  }
+  
+  .signin-buttons button:hover {
+    opacity: 0.9;
+  }
+  
+  .signin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .signin-form input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 250px;
+  }
+  
+  .signin-form button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .signin-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .switch-button {
+    background-color: #28a745; /* Bootstrap Green */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .switch-button:hover {
+    opacit
+  
