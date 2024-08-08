@@ -2,6 +2,7 @@ import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import { auth, db } from '../configuration';
 import { signOut } from 'firebase/auth';
 import { collection, addDoc, query, where, getDocs, doc, updateDoc, deleteDoc, arrayUnion, arrayRemove } from 'firebase/firestore';
+import { format } from 'date-fns';
 
 interface Habit {
   id: string;
@@ -70,14 +71,15 @@ const Home: React.FC<HomeProps> = ({ user }) => {
   const handleCheckIn = async (habitId: string) => {
     if (user) {
       try {
-        const date = new Date().toISOString().split('T')[0];
+        const date = new Date();
+        const formattedDate = format(date, "MMMM dd, yyyy hh:mm a");
         const habitRef = doc(db, 'habits', habitId);
         await updateDoc(habitRef, {
-          progress: arrayUnion(date)
+          progress: arrayUnion(formattedDate)
         });
         setHabits(habits.map(habit =>
           habit.id === habitId
-            ? { ...habit, progress: [...habit.progress, date] }
+            ? { ...habit, progress: [...habit.progress, formattedDate] }
             : habit
         ));
       } catch (err) {
@@ -119,7 +121,6 @@ const Home: React.FC<HomeProps> = ({ user }) => {
     await signOut(auth);
   };
 
-  
   return (
     <div className="Home">
       <h1>Habit Tracker</h1>
@@ -171,8 +172,6 @@ const Home: React.FC<HomeProps> = ({ user }) => {
       </ul>
     </div>
   );
-  
-  
 };
 
 export default Home;
